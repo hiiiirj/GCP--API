@@ -1,0 +1,16 @@
+import os
+from google.cloud import bigquery
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="Path_of_service_acount_key"    
+
+client = bigquery.Client() 
+
+query = """
+ SELECT * FROM `table_ID` LIMIT 10
+"""
+query_job = client.query(query)
+results = query_job.result()
+
+for row in results:
+     print(row)
+
+
