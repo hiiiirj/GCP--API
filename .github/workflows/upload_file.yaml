@@ -1,0 +1,25 @@
+name: Upload File Workflow
+
+on:
+  push:
+    branches:
+      - main  # Adjust as needed
+
+jobs:
+  upload-file:
+    runs-on: ubuntu-latest
+
+    inputs:
+      file-path:
+        description: 'Path to the file to be uploaded'
+        required: true
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Upload File
+        uses: actions/upload-artifact@v2
+        with:
+          name: uploaded-file
+          path: ${{ inputs.file-path }}  # Use the input variable for file path
