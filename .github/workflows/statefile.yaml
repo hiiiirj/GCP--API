@@ -30,7 +30,4 @@ jobs:
         
     - name: Execute Python script
       run: |
-        cd Statefile-upload
-        python main.py
-      env:
-        GCP_CREDS: ${{ secrets.GCP_CREDS }}
+        python Statefile-upload/main.py
