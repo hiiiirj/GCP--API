@@ -32,4 +32,4 @@ jobs:
         
     - name: Execute Python script
       run: |
-        ${{ github.event.inputs.file-path }} python Statefile-upload/main.py 
+        python Statefile-upload/main.py ${{ github.event.inputs.file-path }}
