@@ -8,19 +8,28 @@ on:
         required: true
 
 jobs:
-  upload-file:
+  upload:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Upload File
-        run: |
-          mkdir -p Statefile-upload
-          mv ${{ github.event.inputs.file-path }} State-file-upload
-          git add path/to/uploaded/folder/${{ github.event.inputs.file-path }}
-          git config --global user.email "rajat11299@gmail.com"
-          git config --global user.name "rajat11299"
-          git commit -m "Uploaded file"
-          git push
+    - name: Checkout code
+      uses: actions/checkout@v2
+      
+    - name: Authenticate with GCP
+      uses: google-github-actions/auth@v2
+      with: 
+        credentials_json: ${{ secrets.GCP_CREDS }}
+      
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+        
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install google-cloud-storage
+        
+    - name: Execute Python script
+      run: |
+        python Statefile-upload/main.py ${github.event.inputs.file-path}
