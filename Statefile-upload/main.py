@@ -1,5 +1,6 @@
 from google.cloud import storage
 import os
+import sys
 
 def upload_file_to_gcs(file_path, bucket_name):
     """Uploads a file to Google Cloud Storage and returns the URL."""
@@ -26,7 +27,7 @@ def upload_file_to_gcs(file_path, bucket_name):
 
 if __name__ == "__main__":
     # Set your file path and bucket name
-    file_path = os.environ['INPUT_STORE']
+    file_path = sys.argv[1]
     bucket_name = "my-bucket3722"
 
     # Upload the file and get the URL
