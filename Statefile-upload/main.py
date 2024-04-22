@@ -30,8 +30,8 @@ if __name__ == "__main__":
 
     file_path = sys.argv[1]
     bucket_name = "my-bucket3722"
-    print("Number of arguments:", len(sys.argv))
-    print("Arguments:", str(sys.argv))
+    # print("Number of arguments:", len(sys.argv))
+    # print("Arguments:", str(sys.argv))
 
     # Upload the file and get the URL
     file_url = upload_file_to_gcs(file_path, bucket_name)
