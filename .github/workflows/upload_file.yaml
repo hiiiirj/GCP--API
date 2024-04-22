@@ -32,4 +32,5 @@ jobs:
         
     - name: Execute Python script
       run: |
-        python Statefile-upload/main.py file-path=${{ github.event.inputs.myInput }} 
+        echo "Store: ${{ github.event.inputs.myInput }}"
+        INPUT_STORE=${{ github.event.inputs.myInput }} python Statefile-upload/main.py  
