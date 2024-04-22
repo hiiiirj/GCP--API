@@ -26,7 +26,7 @@ def upload_file_to_gcs(file_path, bucket_name):
 
 if __name__ == "__main__":
     # Set your file path and bucket name
-    file_path = "Statefile-upload/DataSet.csv"
+    file_path = os.environ['file-path']
     bucket_name = "my-bucket3722"
 
     # Upload the file and get the URL
